@@ -62,6 +62,12 @@ configurable_parameters = [{'name': 'camera_name',                  'default': '
                            {'name': 'reconnect_timeout',            'default': '6.', 'description': 'Timeout(seconds) between consequtive reconnection attempts'},
                           ]
 
+config = os.path.join(
+        get_package_share_directory('realsense2_camera'),
+        'config',
+        'params.yaml'
+        )
+
 def declare_configurable_parameters(parameters):
     return [DeclareLaunchArgument(param['name'], default_value=param['default'], description=param['description']) for param in parameters]
 
@@ -76,55 +82,49 @@ def generate_launch_description():
             launch_ros.actions.Node(
                 condition=IfCondition(PythonExpression([LaunchConfiguration('config_file'), " == ''"])),
                 package='realsense2_camera',
-                node_namespace=LaunchConfiguration("camera_name"),
-                node_name=LaunchConfiguration("camera_name"),
-                node_executable='realsense2_camera_node',
+                # node_namespace='camera',
+                # node_name='camera',
+                executable='realsense2_camera_node',
                 prefix=['stdbuf -o L'],
-                parameters=[set_configurable_parameters(configurable_parameters)
-                            ],
+                parameters=[config],
                 output='screen',
                 arguments=['--ros-args', '--log-level', LaunchConfiguration('log_level')],
                 ),
             launch_ros.actions.Node(
                 condition=IfCondition(PythonExpression([LaunchConfiguration('config_file'), " != ''"])),
                 package='realsense2_camera',
-                node_namespace=LaunchConfiguration("camera_name"),
-                node_name=LaunchConfiguration("camera_name"),
-                node_executable='realsense2_camera_node',
+                # node_namespace='camera',
+                # node_name='camera',
+                executable='realsense2_camera_node',
                 prefix=['stdbuf -o L'],
-                parameters=[set_configurable_parameters(configurable_parameters)
-                            , PythonExpression([LaunchConfiguration("config_file")])
-                            ],
+                parameters=[config],
                 output='screen',
                 arguments=['--ros-args', '--log-level', LaunchConfiguration('log_level')],
                 ),
             ])
     else:
-        return LaunchDescription(declare_configurable_parameters(configurable_parameters) + [
+        return LaunchDescription([
             # Realsense
             launch_ros.actions.Node(
-                condition=IfCondition(PythonExpression([LaunchConfiguration('config_file'), " == ''"])),
+                # condition=IfCondition(PythonExpression([LaunchConfiguration('config_file'), " == ''"])),
                 package='realsense2_camera',
-                namespace=LaunchConfiguration("camera_name"),
-                name=LaunchConfiguration("camera_name"),
+                namespace='camera',
+                name='camera',
                 executable='realsense2_camera_node',
-                parameters=[set_configurable_parameters(configurable_parameters)
-                            ],
+                parameters=[config],
                 output='screen',
-                arguments=['--ros-args', '--log-level', LaunchConfiguration('log_level')],
+                arguments=['--ros-args', '--log-level', 'info'],
                 emulate_tty=True,
                 ),
-            launch_ros.actions.Node(
-                condition=IfCondition(PythonExpression([LaunchConfiguration('config_file'), " != ''"])),
-                package='realsense2_camera',
-                namespace=LaunchConfiguration("camera_name"),
-                name=LaunchConfiguration("camera_name"),
-                executable='realsense2_camera_node',
-                parameters=[set_configurable_parameters(configurable_parameters)
-                            , PythonExpression([LaunchConfiguration("config_file")])
-                            ],
-                output='screen',
-                arguments=['--ros-args', '--log-level', LaunchConfiguration('log_level')],
-                emulate_tty=True,
-                ),
+            # launch_ros.actions.Node(
+            #     condition=IfCondition(PythonExpression([LaunchConfiguration('config_file'), " != ''"])),
+            #     package='realsense2_camera',
+            #     # node_namespace='camera',
+            #     # node_name='camera',
+            #     executable='realsense2_camera_node',
+            #     parameters=[config],
+            #     output='screen',
+            #     arguments=['--ros-args', '--log-level', LaunchConfiguration('log_level')],
+            #     emulate_tty=True,
+            #     ),
         ])
