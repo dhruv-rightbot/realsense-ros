@@ -3,7 +3,7 @@
     accel_fps: 63
     accel_info_qos: DEFAULT
     accel_qos: SENSOR_DATA
-    align_depth.enable: false
+    align_depth.enable: true
     align_depth.frames_queue_size: 16
     angular_velocity_cov: 0.01
     base_frame_id: link
@@ -22,11 +22,11 @@
     colorizer.stream_index_filter: -1
     colorizer.visual_preset: 0
     decimation_filter.enable: true
-    decimation_filter.filter_magnitude: 1
+    decimation_filter.filter_magnitude: 8
     decimation_filter.frames_queue_size: 16
-    decimation_filter.stream_filter: 1
-    decimation_filter.stream_format_filter: 1
-    decimation_filter.stream_index_filter: -1
+    decimation_filter.stream_filter: 0
+    decimation_filter.stream_format_filter: 0
+    decimation_filter.stream_index_filter: 0
     depth_info_qos: DEFAULT
     depth_module.auto_exposure_limit: 200000
     depth_module.auto_exposure_limit_toggle: false
@@ -137,17 +137,17 @@
     spatial_filter.filter_smooth_delta: 12
     spatial_filter.frames_queue_size: 16
     spatial_filter.holes_fill: 0
-    spatial_filter.stream_filter: 1
-    spatial_filter.stream_format_filter: 1
-    spatial_filter.stream_index_filter: -1
+    spatial_filter.stream_filter: 0
+    spatial_filter.stream_format_filter: 0
+    spatial_filter.stream_index_filter: 0
     temporal_filter.enable: true
     temporal_filter.filter_smooth_alpha: 0.42
     temporal_filter.filter_smooth_delta: 44
     temporal_filter.frames_queue_size: 16
     temporal_filter.holes_fill: 3
     temporal_filter.stream_filter: 1
-    temporal_filter.stream_format_filter: 1
-    temporal_filter.stream_index_filter: -1
+    temporal_filter.stream_format_filter: 0
+    temporal_filter.stream_index_filter: 0
     tf_publish_rate: 0.0
     unite_imu_method: 0
     usb_port_id: ''
