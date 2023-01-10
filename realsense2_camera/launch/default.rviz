@@ -4,18 +4,13 @@ Panels:
     Name: Displays
     Property Tree Widget:
       Expanded:
-        - /Global Options1
-        - /Status1
-        - /PointCloud21
-        - /PointCloud21/Status1
         - /PointCloud21/Topic1
-        - /LaserScan1
-        - /LaserScan1/Status1
         - /LaserScan1/Topic1
-        - /TF1
-        - /TF1/Frames1
         - /TF1/Tree1
-      Splitter Ratio: 0.5
+        - /TF1/Tree1/map1
+        - /TF1/Tree1/map1/base_footprint1
+        - /TF1/Tree1/map1/base_footprint1/base_link1
+      Splitter Ratio: 0.8410958647727966
     Tree Height: 865
   - Class: rviz_common/Selection
     Name: Selection
@@ -213,6 +208,12 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: false
+        barcode_link:
+          Value: true
+        base_footprint:
+          Value: true
+        base_link:
+          Value: true
         camera_color_frame:
           Value: false
         camera_color_optical_frame:
@@ -223,7 +224,35 @@ Visualization Manager:
           Value: false
         camera_link:
           Value: false
+        costmap_link:
+          Value: true
+        front_left_caster_link:
+          Value: true
+        front_lidar:
+          Value: true
+        front_right_caster_link:
+          Value: true
+        imu:
+          Value: true
         map:
+          Value: true
+        odom:
+          Value: true
+        rack:
+          Value: true
+        rack_dummy:
+          Value: true
+        rear_left_caster_link:
+          Value: true
+        rear_lidar:
+          Value: true
+        rear_right_caster_link:
+          Value: true
+        robot_dummy:
+          Value: true
+        wheel_left_link:
+          Value: true
+        wheel_right_link:
           Value: true
       Marker Scale: 1
       Name: TF
@@ -231,20 +260,83 @@ Visualization Manager:
       Show Axes: true
       Show Names: false
       Tree:
-        camera_link:
-          camera_color_frame:
-            camera_color_optical_frame:
-              {}
-          camera_depth_frame:
-            camera_depth_optical_frame:
-              map:
+        map:
+          base_footprint:
+            base_link:
+              barcode_link:
                 {}
+              costmap_link:
+                {}
+              front_left_caster_link:
+                {}
+              front_lidar:
+                {}
+              front_right_caster_link:
+                {}
+              imu:
+                {}
+              rear_left_caster_link:
+                {}
+              rear_lidar:
+                {}
+              rear_right_caster_link:
+                {}
+              wheel_left_link:
+                {}
+              wheel_right_link:
+                {}
+            rack:
+              {}
+          odom:
+            {}
       Update Interval: 0
+      Value: true
+    - Alpha: 0.30000001192092896
+      Class: rviz_default_plugins/Map
+      Color Scheme: map
+      Draw Behind: false
+      Enabled: true
+      Name: Map
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        Filter size: 10
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /map
+      Update Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /map_updates
+      Use Timestamp: false
+      Value: true
+    - Alpha: 0.699999988079071
+      Class: rviz_default_plugins/Map
+      Color Scheme: costmap
+      Draw Behind: false
+      Enabled: true
+      Name: Map
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        Filter size: 10
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /local_costmap/costmap
+      Update Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /local_costmap/costmap_updates
+      Use Timestamp: false
       Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
-    Fixed Frame: camera_depth_optical_frame
+    Fixed Frame: map
     Frame Rate: 30
   Name: root
   Tools:
@@ -285,7 +377,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/ThirdPersonFollower
-      Distance: 5.620545387268066
+      Distance: 19.14959716796875
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1

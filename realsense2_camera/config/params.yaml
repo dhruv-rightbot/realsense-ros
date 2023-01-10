@@ -49,7 +49,7 @@
     depth_module.inter_cam_sync_mode: 0
     depth_module.laser_power: 150.0
     depth_module.output_trigger_enabled: false
-    depth_module.profile: 640x480x30
+    depth_module.profile: 640x480x15
     depth_module.sequence_id: 0
     depth_module.sequence_name: 0
     depth_module.sequence_size: 2
@@ -57,10 +57,10 @@
     depth_qos: SYSTEM_DEFAULT
     device_type: ''
     diagnostics_period: 0.0
-    disparity_filter.enable: true
-    disparity_to_depth.enable: true
+    disparity_filter.enable: false
+    disparity_to_depth.enable: false
     enable_accel: false
-    enable_color: true
+    enable_color: false
     enable_depth: true
     enable_gyro: false
     enable_infra1: false
@@ -86,7 +86,7 @@
     infra2_info_qos: DEFAULT
     infra2_qos: SYSTEM_DEFAULT
     initial_reset: false
-    json_file_path: '/home/dhruv/Desktop/Rightbot_ros2_rolling_ws/realsense_ws/src/realsense-ros/realsense2_camera/config/high_accuracy.json'
+    json_file_path: '/application/rightbot_ws/src/realsense/realsense-ros/realsense2_camera/config/high_accuracy.json'
     linear_accel_cov: 0.01
     motion_module.enable_motion_correction: true
     motion_module.frames_queue_size: 16
@@ -125,13 +125,13 @@
     rgb_camera.gamma: 300
     rgb_camera.global_time_enabled: true
     rgb_camera.hue: 0
-    rgb_camera.profile: 640x480x30
+    rgb_camera.profile: 640x480x15
     rgb_camera.saturation: 64
     rgb_camera.sharpness: 50
     rgb_camera.white_balance: 4600.0
     rosbag_filename: ''
     serial_no: ''
-    spatial_filter.enable: true
+    spatial_filter.enable: false
     spatial_filter.filter_magnitude: 2
     spatial_filter.filter_smooth_alpha: 0.36
     spatial_filter.filter_smooth_delta: 12
@@ -140,7 +140,7 @@
     spatial_filter.stream_filter: 0
     spatial_filter.stream_format_filter: 0
     spatial_filter.stream_index_filter: 0
-    temporal_filter.enable: true
+    temporal_filter.enable: false
     temporal_filter.filter_smooth_alpha: 0.42
     temporal_filter.filter_smooth_delta: 44
     temporal_filter.frames_queue_size: 16
